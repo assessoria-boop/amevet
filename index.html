@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AMEVET – Hospital Veterinário 24h em São Paulo</title>
+  <meta name="description" content="AMEVET Hospital Veterinário 24h na Zona Leste de SP. Consultas, cirurgias, internação, exames e emergência. Cuidamos de quem você mais ama." />
+  <link rel="preload" as="image" href="fachada.jpg" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --azul: #1565C0;
+      --azul-escuro: #0d47a1;
+      --azul-suave: #e8f0fe;
+      --verde: #00897B;
+      --verde-hover: #00695c;
+      --texto: #111;
+      --cinza: #6b7280;
+      --cinza-claro: #f4f4f5;
+      --borda: #e5e7eb;
+      --branco: #fff;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      color: var(--texto);
+      background: var(--branco);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── TOPO ── */
+    .topo {
+      background: var(--azul);
+      color: rgba(255,255,255,0.92);
+      text-align: center;
+      padding: 9px 20px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+    .topo-dot {
+      display: inline-block;
+      width: 7px; height: 7px;
+      background: #4ade80;
+      border-radius: 50%;
+      margin-right: 8px;
+      vertical-align: middle;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 48px;
+      border-bottom: 1px solid var(--borda);
+      background: var(--branco);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--azul);
+      letter-spacing: -0.5px;
+    }
+    .nav-logo span { color: var(--verde); }
+    .nav-btn {
+      background: #25D366;
+      color: white;
+      text-decoration: none;
+      padding: 10px 22px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .nav-btn svg { width: 18px; height: 18px; fill: white; }
+    @media(max-width:600px){
+      nav { padding: 14px 20px; }
+      .nav-logo { font-size: 18px; }
+      .nav-btn { font-size: 13px; padding: 9px 16px; }
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: white;
+      padding: 72px 24px 64px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-bottom: 1px solid var(--borda);
+    }
+    .hero-content {
+      max-width: 640px;
+      color: var(--texto);
+    }
+    .hero-logo-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .hero-logo-wrap img {
+      width: 96px; height: 96px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--azul);
+      box-shadow: 0 4px 20px rgba(21,101,192,0.15);
+    }
+    .hero-logo-label { font-size: 13px; font-weight: 700; color: var(--azul); letter-spacing: 1px; text-transform: uppercase; }
+    .hero-logo-sub { font-size: 12px; color: var(--cinza); margin-top: 2px; }
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 900;
+      line-height: 1.08;
+      margin-bottom: 16px;
+      letter-spacing: -1.5px;
+      color: #0a0a0a;
+    }
+    .hero h1 span { color: var(--azul); }
+    .hero-sub {
+      font-size: 18px;
+      line-height: 1.6;
+      color: #555;
+      margin-bottom: 36px;
+      font-weight: 400;
+    }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+    .btn-wpp {
+      background: #25D366;
+      color: white;
+      text-decoration: none;
+      padding: 18px 36px;
+      border-radius: 999px;
+      font-size: 16px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 4px 16px rgba(37,211,102,0.3);
+      transition: transform 0.15s;
+    }
+    .btn-wpp:hover { transform: translateY(-2px); }
+    .btn-wpp svg { width: 22px; height: 22px; fill: white; flex-shrink: 0; }
+    @media(max-width:600px){
+      .hero { padding: 56px 24px 48px; }
+    }
+
+    /* ── STATS ── */
+    .stats {
+      background: var(--azul-escuro);
+      color: white;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .stat {
+      padding: 28px 24px;
+      text-align: center;
+      border-right: 1px solid rgba(255,255,255,0.15);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .stat:last-child { border-right: none; }
+    .stat-num { font-size: 32px; font-weight: 900; color: white; letter-spacing: -1px; }
+    .stat-num span { color: #7dd3fc; }
+    .stat-label { font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+    @media(max-width:600px){
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .stat { padding: 20px 16px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+      .stat:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.15); }
+      .stat-num { font-size: 26px; }
+    }
+
+    /* ── SEÇÃO GENÉRICA ── */
+    .sec-tag {
+      display: inline-block;
+      background: var(--azul-suave);
+      color: var(--azul);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+    .sec-titulo {
+      font-size: 36px;
+      font-weight: 900;
+      line-height: 1.15;
+      letter-spacing: -0.5px;
+      margin-bottom: 12px;
+    }
+    .sec-titulo span { color: var(--azul); }
+    .sec-sub { font-size: 16px; color: var(--cinza); line-height: 1.6; margin-bottom: 32px; }
+
+    /* ── SERVIÇOS ── */
+    .sec-servicos { padding: 72px 48px; background: var(--cinza-claro); }
+    .sec-servicos-inner { max-width: 1100px; margin: 0 auto; }
+    .sec-servicos-inner > div:first-child { text-align: center; margin-bottom: 48px; }
+    .servicos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .servico-card {
+      background: white;
+      border-radius: 20px;
+      padding: 32px 28px;
+      border: 1px solid var(--borda);
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .servico-card:hover { box-shadow: 0 8px 32px rgba(21,101,192,0.1); transform: translateY(-2px); }
+    .servico-ico {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      background: var(--azul-suave);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+    .servico-card h3 { font-size: 16px; font-weight: 800; margin-bottom: 6px; color: #0a0a0a; }
+    .servico-card p { font-size: 14px; color: var(--cinza); line-height: 1.6; }
+    @media(max-width:600px){ .sec-servicos { padding: 48px 20px; } }
+
+    /* ── FACHADA ── */
+    .sec-fachada {
+      padding: 72px 48px;
+      background: white;
+    }
+    .sec-fachada-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: center;
+    }
+    .sec-fachada img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 12px 40px rgba(21,101,192,0.15);
+    }
+    .fachada-texto .sec-titulo { font-size: 32px; }
+    .motivos { display: flex; flex-direction: column; gap: 20px; margin-top: 28px; }
+    .motivo { display: flex; gap: 16px; align-items: flex-start; }
+    .motivo-num {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: var(--azul);
+      color: white;
+      font-weight: 900;
+      font-size: 14px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .motivo h4 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+    .motivo p { font-size: 14px; color: var(--cinza); line-height: 1.5; }
+    @media(max-width:768px){
+      .sec-fachada { padding: 48px 20px; }
+      .sec-fachada-inner { grid-template-columns: 1fr; gap: 32px; }
+    }
+
+    /* ── DEPOIMENTOS ── */
+    .sec-depoi { padding: 72px 48px; background: var(--cinza-claro); }
+    .sec-depoi-inner { max-width: 900px; margin: 0 auto; text-align: center; }
+    .carrossel-wrap { position: relative; overflow: hidden; margin-top: 32px; }
+    .carrossel-track {
+      display: flex;
+      transition: transform 0.4s ease;
+    }
+    .carrossel-slide {
+      min-width: 100%;
+      padding: 0 4px;
+    }
+    .carrossel-slide img { width: 100%; border-radius: 16px; display: block; }
+    .carrossel-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .carrossel-btn {
+      background: var(--azul);
+      color: white;
+      border: none;
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      font-size: 18px;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .carrossel-dots { display: flex; gap: 8px; }
+    .carrossel-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--borda);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .carrossel-dot.ativo { background: var(--azul); }
+    @media(max-width:600px){ .sec-depoi { padding: 48px 20px; } }
+
+    /* ── CTA ── */
+    .sec-cta {
+      background: linear-gradient(135deg, var(--azul-escuro), var(--azul));
+      color: white;
+      text-align: center;
+      padding: 72px 48px;
+    }
+    .sec-cta h2 { font-size: clamp(26px, 4vw, 40px); font-weight: 900; margin-bottom: 12px; }
+    .sec-cta h2 span { color: #7dd3fc; }
+    .sec-cta p { font-size: 16px; color: rgba(255,255,255,0.8); margin-bottom: 32px; }
+    @media(max-width:600px){ .sec-cta { padding: 48px 20px; } }
+
+    /* ── LOCALIZAÇÃO ── */
+    .sec-local { padding: 72px 48px; background: white; }
+    .sec-local-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+    .info-box {
+      background: var(--cinza-claro);
+      border-radius: 16px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 24px;
+    }
+    .info-linha { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: var(--cinza); line-height: 1.5; }
+    .info-linha strong { display: block; color: var(--texto); font-size: 13px; font-weight: 700; margin-bottom: 2px; }
+    .ico { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+    .mapa-wrap {
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--cinza-claro);
+      height: 340px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border: 2px dashed var(--borda);
+      flex-direction: column;
+      gap: 12px;
+    }
+    .mapa-wrap iframe { width: 100%; height: 100%; border: none; display: block; }
+    .mapa-btn {
+      background: var(--azul);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    @media(max-width:768px){
+      .sec-local { padding: 48px 20px; }
+      .local-btn-wrap { display: flex; justify-content: center; }
+      .sec-local-inner { grid-template-columns: 1fr; gap: 32px; }
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0d1117;
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: 28px 20px;
+      font-size: 13px;
+    }
+    footer strong { color: white; }
+
+    /* ── WPP FLUTUANTE ── */
+    .wpp-float {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 56px; height: 56px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      z-index: 999;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+    }
+    .wpp-float svg { width: 28px; height: 28px; fill: white; }
+  </style>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-K8T3NWG7');</script>
+  <!-- End Google Tag Manager -->
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8T3NWG7" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- TOPO -->
+  <div class="topo">
+    <span class="topo-dot"></span>
+    Atendimento disponível <strong>agora</strong>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <img src="logo.jpg" alt="AMEVET" style="height:44px;width:44px;border-radius:50%;object-fit:cover;">
+      <div>
+        <div style="font-size:15px;font-weight:900;color:var(--azul);line-height:1.1;">AMEVET</div>
+        <div style="font-size:11px;color:var(--cinza);font-weight:500;">Jardim do Carmo</div>
+      </div>
+    </div>
+    <a href="https://wa.me/5511945539685?text=Ol%C3%A1%2C%20encontrei%20voc%C3%AAs%20pelo%20Google%20e%20gostaria%20de%20atendimento.%20%5BN%C3%A3o%20apague%20esta%20mensagem%20para%20atendimento%20imediato%5D" class="nav-btn">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Falar no WhatsApp
+    </a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-content">
+      <div class="hero-logo-wrap">
+        <img src="logo.jpg" alt="AMEVET">
+        <div class="hero-logo-label">Itaquera - Zona Leste</div>
+      </div>
+      <h1>Hospital Veterinário<br/><span>AMEVET 24H</span></h1>
+      <p class="hero-sub">Atendimento rápido para salvar o seu pet.</p>
+      <div class="hero-btns">
+        <a href="https://wa.me/5511945539685?text=Ol%C3%A1%2C%20encontrei%20voc%C3%AAs%20pelo%20Google%20e%20gostaria%20de%20atendimento.%20%5BN%C3%A3o%20apague%20esta%20mensagem%20para%20atendimento%20imediato%5D" class="btn-wpp">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Falar no WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-num">TOP #1</div>
+      <div class="stat-label">na região</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">+413</div>
+      <div class="stat-label">Avaliações Positivas</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">24h</div>
+      <div class="stat-label">Emergência disponível</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">Estacionamento</div>
+      <div class="stat-label">Grátis</div>
+    </div>
+  </div>
+
+  <!-- SERVIÇOS -->
+  <div class="sec-servicos">
+    <div class="sec-servicos-inner">
+      <div>
+        <span class="sec-tag">O que oferecemos</span>
+        <h2 class="sec-titulo">Estrutura completa para<br/><span>cuidar do seu pet</span></h2>
+        <p class="sec-sub">Tudo que seu animal precisa, em um só lugar — com tecnologia e equipe dedicada.</p>
+      </div>
+      <div class="servicos-grid">
+        <div class="servico-card">
+          <div class="servico-ico"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#1565C0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+          <div>
+            <h3>Consultas e especialistas</h3>
+            <p>Clínica geral e médicos especialistas prontos para atender seu pet.</p>
+          </div>
+        </div>
+        <div class="servico-card">
+          <div class="servico-ico"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#1565C0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div>
+            <h3>Emergência 24h</h3>
+            <p>Pronto-atendimento a qualquer hora. Emergência não avisa e a gente não fecha.</p>
+          </div>
+        </div>
+        <div class="servico-card">
+          <div class="servico-ico"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#1565C0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg></div>
+          <div>
+            <h3>Exames laboratoriais e imagem</h3>
+            <p>Diagnósticos precisos com equipamentos modernos e resultados rápidos.</p>
+          </div>
+        </div>
+        <div class="servico-card">
+          <div class="servico-ico"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#1565C0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+          <div>
+            <h3>Internação monitorada</h3>
+            <p>Acompanhamento contínuo com equipe presente 24h por dia.</p>
+          </div>
+        </div>
+        <div class="servico-card">
+          <div class="servico-ico"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#1565C0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <div>
+            <h3>Centro cirúrgico completo</h3>
+            <p>Cirurgias eletivas e emergenciais com toda a segurança que seu pet merece.</p>
+          </div>
+        </div>
+        <div class="servico-card">
+          <div class="servico-ico"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#1565C0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2z"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg></div>
+          <div>
+            <h3>Farmácia veterinária</h3>
+            <p>Medicamentos disponíveis no local para agilizar o tratamento.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DEPOIMENTOS -->
+  <div class="sec-depoi">
+    <div class="sec-depoi-inner">
+      <span class="sec-tag">Avaliações reais</span>
+      <h2 class="sec-titulo">O que dizem <span>nossos clientes</span></h2>
+      <div class="carrossel-wrap">
+        <div class="carrossel-track" id="carrosselTrack">
+          <div class="carrossel-slide">
+            <img src="depoi1.jpg" alt="Avaliação Gilian Moreira" style="width:100%;border-radius:16px;display:block;">
+          </div>
+          <div class="carrossel-slide">
+            <img src="depoi3.jpg" alt="Avaliação Ana Beatriz" style="width:100%;border-radius:16px;display:block;">
+          </div>
+          <div class="carrossel-slide">
+            <img src="depoi4.jpg" alt="Avaliação Everton Fonseca" style="width:100%;border-radius:16px;display:block;">
+          </div>
+        </div>
+        <div class="carrossel-nav">
+          <button class="carrossel-btn" onclick="moverCarrossel(-1)">&#8592;</button>
+          <div class="carrossel-dots">
+            <div class="carrossel-dot ativo" onclick="irParaSlide(0)"></div>
+            <div class="carrossel-dot" onclick="irParaSlide(1)"></div>
+            <div class="carrossel-dot" onclick="irParaSlide(2)"></div>
+          </div>
+          <button class="carrossel-btn" onclick="moverCarrossel(1)">&#8594;</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- POR QUE -->
+  <div class="sec-fachada">
+    <div class="sec-fachada-inner">
+      <img src="fachada.jpg" alt="Fachada AMEVET Hospital Veterinário">
+      <div class="fachada-texto">
+        <span class="sec-tag">Por que a AMEVET?</span>
+        <h2 class="sec-titulo" style="font-size:32px;">Amor e tecnologia<br/><span>em cada atendimento</span></h2>
+        <p class="sec-sub" style="margin-bottom:0;">Uma estrutura hospitalar completa com o carinho de quem trata seu pet como parte da família.</p>
+        <div class="motivos">
+          <div class="motivo">
+            <div class="motivo-num">01</div>
+            <div><h4>Equipe humanizada</h4><p>Profissionais que tratam cada pet com respeito, paciência e dedicação real.</p></div>
+          </div>
+          <div class="motivo">
+            <div class="motivo-num">02</div>
+            <div><h4>Disponível 24 horas</h4><p>Emergência não avisa — e a AMEVET nunca fecha. Sempre prontos para você.</p></div>
+          </div>
+          <div class="motivo">
+            <div class="motivo-num">03</div>
+            <div><h4>Melhor custo-benefício</h4><p>Estrutura completa com preço justo. Qualidade acessível para o seu pet.</p></div>
+          </div>
+          <div class="motivo">
+            <div class="motivo-num">04</div>
+            <div><h4>Estacionamento grátis</h4><p>Comodidade para você chegar tranquilo — especialmente nas emergências.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="sec-cta">
+    <h2>A saúde do seu pet <span>não tem hora marcada.</span></h2>
+    <p>Entre em contato agora e receba atendimento imediato da nossa equipe.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <a href="https://wa.me/5511945539685?text=Ol%C3%A1%2C%20encontrei%20voc%C3%AAs%20pelo%20Google%20e%20gostaria%20de%20atendimento.%20%5BN%C3%A3o%20apague%20esta%20mensagem%20para%20atendimento%20imediato%5D" class="btn-wpp">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Falar no WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <!-- LOCALIZAÇÃO -->
+  <div class="sec-local">
+    <div class="sec-local-inner">
+      <div>
+        <span class="sec-tag">Onde estamos</span>
+        <h2 class="sec-titulo" style="font-size:32px;">Fácil de chegar,<br/><span>difícil de esquecer</span></h2>
+        <div class="info-box">
+          <div class="info-linha">
+            <span class="ico"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#1565C0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <div><strong>Endereço</strong>Av. Osvaldo Pucci, 176 – Jardim N. Sra. do Carmo<br/>Zona Leste – São Paulo – SP</div>
+          </div>
+          <div class="info-linha">
+            <span class="ico"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#1565C0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+            <div><strong>Horário</strong>Aberto 24 horas — todos os dias, inclusive feriados</div>
+          </div>
+          <div class="info-linha">
+            <span class="ico"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#1565C0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></span>
+            <div><strong>Estacionamento</strong>Gratuito para clientes</div>
+          </div>
+        </div>
+        <div class="local-btn-wrap">
+        <a href="https://wa.me/5511945539685?text=Ol%C3%A1%2C%20encontrei%20voc%C3%AAs%20pelo%20Google%20e%20gostaria%20de%20atendimento.%20%5BN%C3%A3o%20apague%20esta%20mensagem%20para%20atendimento%20imediato%5D" class="btn-wpp" style="margin-top:24px;">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Falar no WhatsApp
+        </a>
+        </div>
+      </div>
+      <div>
+        <div class="mapa-wrap" id="mapaWrap" onclick="carregarMapa()">
+          <span style="font-size:32px;">🗺️</span>
+          <button class="mapa-btn">Ver no mapa</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <strong>AMEVET Hospital Veterinário</strong> · Av. Osvaldo Pucci, 176 – São Paulo – SP<br/>
+    (11) 9 4553-9685 · Atendimento 24h
+  </footer>
+
+  <!-- WPP FLUTUANTE -->
+  <a href="https://wa.me/5511945539685?text=Ol%C3%A1%2C%20encontrei%20voc%C3%AAs%20pelo%20Google%20e%20gostaria%20de%20atendimento.%20%5BN%C3%A3o%20apague%20esta%20mensagem%20para%20atendimento%20imediato%5D" class="wpp-float" title="WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script>
+    var slide = 0;
+    var track = document.getElementById('carrosselTrack');
+    var dots = document.querySelectorAll('.carrossel-dot');
+    var total = 3;
+
+    function irParaSlide(n) {
+      slide = n;
+      track.style.transform = 'translateX(-' + (slide * 100) + '%)';
+      dots.forEach(function(d, i) { d.classList.toggle('ativo', i === slide); });
+    }
+    function moverCarrossel(dir) {
+      slide = (slide + dir + total) % total;
+      irParaSlide(slide);
+    }
+
+    var startX = 0;
+    track.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; });
+    track.addEventListener('touchend', function(e) {
+      var diff = startX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) moverCarrossel(diff > 0 ? 1 : -1);
+    });
+
+    function carregarMapa() {
+      var wrap = document.getElementById('mapaWrap');
+      wrap.innerHTML = '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.4!2d-46.5!3d-23.58!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sAv.+Osvaldo+Pucci%2C+176+-+S%C3%A3o+Paulo!5e0!3m2!1spt-BR!2sbr!4v1" width="100%" height="340" style="border:0;" allowfullscreen="" loading="lazy"></iframe>';
+      wrap.style.cursor = 'default';
+    }
+  </script>
+</body>
+</html>

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AMEVET – Hospital Veterinário 24h em São Paulo</title>
   <meta name="description" content="AMEVET Hospital Veterinário 24h na Zona Leste de SP. Consultas, cirurgias, internação, exames e emergência. Cuidamos de quem você mais ama." />
-  <link rel="preload" as="image" href="fachada.jpg" />
+  <link rel="preload" as="image" href="1.webp" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -90,7 +90,7 @@
 
     /* ── HERO ── */
     .hero {
-      background: white;
+      background: linear-gradient(rgba(0,0,0,0.52), rgba(0,0,0,0.52)), url('hero.webp') center/cover no-repeat;
       padding: 72px 24px 64px;
       text-align: center;
       display: flex;
@@ -100,7 +100,7 @@
     }
     .hero-content {
       max-width: 640px;
-      color: var(--texto);
+      color: white;
     }
     .hero-logo-wrap {
       display: flex;
@@ -113,24 +113,24 @@
       width: 96px; height: 96px;
       border-radius: 50%;
       object-fit: cover;
-      border: 3px solid var(--azul);
-      box-shadow: 0 4px 20px rgba(21,101,192,0.15);
+      border: 3px solid white;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
     }
-    .hero-logo-label { font-size: 13px; font-weight: 700; color: var(--azul); letter-spacing: 1px; text-transform: uppercase; }
-    .hero-logo-sub { font-size: 12px; color: var(--cinza); margin-top: 2px; }
+    .hero-logo-label { font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.85); letter-spacing: 1px; text-transform: uppercase; }
+    .hero-logo-sub { font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 2px; }
     .hero h1 {
       font-size: clamp(32px, 5vw, 52px);
       font-weight: 900;
       line-height: 1.08;
       margin-bottom: 16px;
       letter-spacing: -1.5px;
-      color: #0a0a0a;
+      color: white;
     }
-    .hero h1 span { color: var(--azul); }
+    .hero h1 span { color: #7dd3fc; }
     .hero-sub {
       font-size: 18px;
       line-height: 1.6;
-      color: #555;
+      color: rgba(255,255,255,0.85);
       margin-bottom: 36px;
       font-weight: 400;
     }
@@ -422,7 +422,7 @@
   <!-- NAV -->
   <nav>
     <div style="display:flex;align-items:center;gap:10px;">
-      <img src="logo.jpg" alt="AMEVET" style="height:44px;width:44px;border-radius:50%;object-fit:cover;">
+      <img src="logo.webp" alt="AMEVET" style="height:44px;width:44px;border-radius:50%;object-fit:cover;">
       <div>
         <div style="font-size:15px;font-weight:900;color:var(--azul);line-height:1.1;">AMEVET</div>
         <div style="font-size:11px;color:var(--cinza);font-weight:500;">Jardim do Carmo</div>
@@ -438,7 +438,7 @@
   <div class="hero">
     <div class="hero-content">
       <div class="hero-logo-wrap">
-        <img src="logo.jpg" alt="AMEVET">
+        <img src="logo.webp" alt="AMEVET">
         <div class="hero-logo-label">Itaquera - Zona Leste</div>
       </div>
       <h1>Hospital Veterinário<br/><span>AMEVET 24H</span></h1>
@@ -535,13 +535,16 @@
       <div class="carrossel-wrap">
         <div class="carrossel-track" id="carrosselTrack">
           <div class="carrossel-slide">
-            <img src="depoi1.jpg" alt="Avaliação Gilian Moreira" style="width:100%;border-radius:16px;display:block;">
+            <img src="2.webp" alt="Avaliação 1" style="width:100%;border-radius:16px;display:block;">
           </div>
           <div class="carrossel-slide">
-            <img src="depoi3.jpg" alt="Avaliação Ana Beatriz" style="width:100%;border-radius:16px;display:block;">
+            <img src="3.webp" alt="Avaliação 2" style="width:100%;border-radius:16px;display:block;">
           </div>
           <div class="carrossel-slide">
-            <img src="depoi4.jpg" alt="Avaliação Everton Fonseca" style="width:100%;border-radius:16px;display:block;">
+            <img src="4.webp" alt="Avaliação 3" style="width:100%;border-radius:16px;display:block;">
+          </div>
+          <div class="carrossel-slide">
+            <img src="5.webp" alt="Avaliação 4" style="width:100%;border-radius:16px;display:block;">
           </div>
         </div>
         <div class="carrossel-nav">
@@ -550,6 +553,7 @@
             <div class="carrossel-dot ativo" onclick="irParaSlide(0)"></div>
             <div class="carrossel-dot" onclick="irParaSlide(1)"></div>
             <div class="carrossel-dot" onclick="irParaSlide(2)"></div>
+            <div class="carrossel-dot" onclick="irParaSlide(3)"></div>
           </div>
           <button class="carrossel-btn" onclick="moverCarrossel(1)">&#8594;</button>
         </div>
@@ -560,7 +564,7 @@
   <!-- POR QUE -->
   <div class="sec-fachada">
     <div class="sec-fachada-inner">
-      <img src="fachada.jpg" alt="Fachada AMEVET Hospital Veterinário">
+      <img src="1.webp" alt="Fachada AMEVET Hospital Veterinário">
       <div class="fachada-texto">
         <span class="sec-tag">Por que a AMEVET?</span>
         <h2 class="sec-titulo" style="font-size:32px;">Amor e tecnologia<br/><span>em cada atendimento</span></h2>
@@ -650,7 +654,7 @@
     var slide = 0;
     var track = document.getElementById('carrosselTrack');
     var dots = document.querySelectorAll('.carrossel-dot');
-    var total = 3;
+    var total = 4;
 
     function irParaSlide(n) {
       slide = n;

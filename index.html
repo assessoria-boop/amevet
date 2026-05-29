@@ -90,7 +90,7 @@
 
     /* ── HERO ── */
     .hero {
-      background: linear-gradient(rgba(0,0,0,0.52), rgba(0,0,0,0.52)), url('hero.webp') center/cover no-repeat;
+      background: linear-gradient(rgba(255,255,255,0.90), rgba(255,255,255,0.90)), url('hero.webp') center/cover no-repeat;
       padding: 72px 24px 64px;
       text-align: center;
       display: flex;
@@ -100,7 +100,7 @@
     }
     .hero-content {
       max-width: 640px;
-      color: white;
+      color: var(--texto);
     }
     .hero-logo-wrap {
       display: flex;
@@ -113,24 +113,24 @@
       width: 96px; height: 96px;
       border-radius: 50%;
       object-fit: cover;
-      border: 3px solid white;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      border: 3px solid var(--azul);
+      box-shadow: 0 4px 20px rgba(21,101,192,0.15);
     }
-    .hero-logo-label { font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.85); letter-spacing: 1px; text-transform: uppercase; }
-    .hero-logo-sub { font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 2px; }
+    .hero-logo-label { font-size: 13px; font-weight: 700; color: var(--azul); letter-spacing: 1px; text-transform: uppercase; }
+    .hero-logo-sub { font-size: 12px; color: var(--cinza); margin-top: 2px; }
     .hero h1 {
       font-size: clamp(32px, 5vw, 52px);
       font-weight: 900;
       line-height: 1.08;
       margin-bottom: 16px;
       letter-spacing: -1.5px;
-      color: white;
+      color: #0a0a0a;
     }
-    .hero h1 span { color: #7dd3fc; }
+    .hero h1 span { color: var(--azul); }
     .hero-sub {
       font-size: 18px;
       line-height: 1.6;
-      color: rgba(255,255,255,0.85);
+      color: #555;
       margin-bottom: 36px;
       font-weight: 400;
     }
@@ -243,12 +243,9 @@
       background: white;
     }
     .sec-fachada-inner {
-      max-width: 1100px;
+      max-width: 720px;
       margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 56px;
-      align-items: center;
+      display: block;
     }
     .sec-fachada img {
       width: 100%;
@@ -278,43 +275,19 @@
     /* ── DEPOIMENTOS ── */
     .sec-depoi { padding: 72px 48px; background: var(--cinza-claro); }
     .sec-depoi-inner { max-width: 900px; margin: 0 auto; text-align: center; }
-    .carrossel-wrap { position: relative; overflow: hidden; margin-top: 32px; }
-    .carrossel-track {
-      display: flex;
-      transition: transform 0.4s ease;
-    }
-    .carrossel-slide {
-      min-width: 100%;
-      padding: 0 4px;
-    }
+    .carrossel-wrap { position: relative; overflow: hidden; margin-top: 32px; max-width: 420px; margin-left: auto; margin-right: auto; }
+    .carrossel-track { display: flex; transition: transform 0.4s ease; }
+    .carrossel-slide { min-width: 100%; padding: 0 4px; }
     .carrossel-slide img { width: 100%; border-radius: 16px; display: block; }
-    .carrossel-nav {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-      margin-top: 20px;
-    }
-    .carrossel-btn {
-      background: var(--azul);
-      color: white;
-      border: none;
-      width: 40px; height: 40px;
-      border-radius: 50%;
-      font-size: 18px;
-      cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-    }
+    .carrossel-nav { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 20px; }
+    .carrossel-btn { background: var(--azul); color: white; border: none; width: 40px; height: 40px; border-radius: 50%; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
     .carrossel-dots { display: flex; gap: 8px; }
-    .carrossel-dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: var(--borda);
-      cursor: pointer;
-      transition: background 0.2s;
-    }
+    .carrossel-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--borda); cursor: pointer; transition: background 0.2s; }
     .carrossel-dot.ativo { background: var(--azul); }
-    @media(max-width:600px){ .sec-depoi { padding: 48px 20px; } }
+    @media(max-width:600px){
+      .sec-depoi { padding: 48px 20px; }
+      .carrossel-wrap { max-width: 100%; }
+    }
 
     /* ── CTA ── */
     .sec-cta {
@@ -534,18 +507,11 @@
       <h2 class="sec-titulo">O que dizem <span>nossos clientes</span></h2>
       <div class="carrossel-wrap">
         <div class="carrossel-track" id="carrosselTrack">
-          <div class="carrossel-slide">
-            <img src="2.webp" alt="Avaliação 1" style="width:100%;border-radius:16px;display:block;">
-          </div>
-          <div class="carrossel-slide">
-            <img src="3.webp" alt="Avaliação 2" style="width:100%;border-radius:16px;display:block;">
-          </div>
-          <div class="carrossel-slide">
-            <img src="4.webp" alt="Avaliação 3" style="width:100%;border-radius:16px;display:block;">
-          </div>
-          <div class="carrossel-slide">
-            <img src="5.webp" alt="Avaliação 4" style="width:100%;border-radius:16px;display:block;">
-          </div>
+          <div class="carrossel-slide"><img src="1.webp" alt="Avaliação 1"></div>
+          <div class="carrossel-slide"><img src="2.webp" alt="Avaliação 2"></div>
+          <div class="carrossel-slide"><img src="3.webp" alt="Avaliação 3"></div>
+          <div class="carrossel-slide"><img src="4.webp" alt="Avaliação 4"></div>
+          <div class="carrossel-slide"><img src="5.webp" alt="Avaliação 5"></div>
         </div>
         <div class="carrossel-nav">
           <button class="carrossel-btn" onclick="moverCarrossel(-1)">&#8592;</button>
@@ -554,6 +520,7 @@
             <div class="carrossel-dot" onclick="irParaSlide(1)"></div>
             <div class="carrossel-dot" onclick="irParaSlide(2)"></div>
             <div class="carrossel-dot" onclick="irParaSlide(3)"></div>
+            <div class="carrossel-dot" onclick="irParaSlide(4)"></div>
           </div>
           <button class="carrossel-btn" onclick="moverCarrossel(1)">&#8594;</button>
         </div>
@@ -564,7 +531,6 @@
   <!-- POR QUE -->
   <div class="sec-fachada">
     <div class="sec-fachada-inner">
-      <img src="1.webp" alt="Fachada AMEVET Hospital Veterinário">
       <div class="fachada-texto">
         <span class="sec-tag">Por que a AMEVET?</span>
         <h2 class="sec-titulo" style="font-size:32px;">Amor e tecnologia<br/><span>em cada atendimento</span></h2>
@@ -654,7 +620,7 @@
     var slide = 0;
     var track = document.getElementById('carrosselTrack');
     var dots = document.querySelectorAll('.carrossel-dot');
-    var total = 4;
+    var total = 5;
 
     function irParaSlide(n) {
       slide = n;

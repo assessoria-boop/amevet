@@ -161,7 +161,7 @@
       background: var(--azul-escuro);
       color: white;
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
     }
     .stat {
       padding: 28px 24px;
@@ -177,7 +177,9 @@
     .stat-num span { color: #7dd3fc; }
     .stat-label { font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
     @media(max-width:600px){
-      .stats { grid-template-columns: repeat(2, 1fr); }
+      .stats { grid-template-columns: 1fr; }
+      .stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+      .stat:last-child { border-bottom: none; }
       .stat { padding: 20px 16px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
       .stat:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.15); }
       .stat-num { font-size: 26px; }
@@ -429,20 +431,16 @@
   <!-- STATS -->
   <div class="stats">
     <div class="stat">
-      <div class="stat-num">TOP #1</div>
-      <div class="stat-label">na região</div>
+      <div class="stat-num">Referência</div>
+      <div class="stat-label">na Região</div>
     </div>
     <div class="stat">
-      <div class="stat-num">+413</div>
+      <div class="stat-num">+de 430</div>
       <div class="stat-label">Avaliações Positivas</div>
     </div>
     <div class="stat">
-      <div class="stat-num">24h</div>
-      <div class="stat-label">Emergência disponível</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">Estacionamento</div>
-      <div class="stat-label">Grátis</div>
+      <div class="stat-num">24 horas</div>
+      <div class="stat-label">Atendimento todos os dias</div>
     </div>
   </div>
 
